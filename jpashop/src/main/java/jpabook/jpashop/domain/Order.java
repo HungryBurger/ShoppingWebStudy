@@ -4,12 +4,16 @@ package jpabook.jpashop.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.jnlp.UnavailableServiceException;
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
-@Getter
-@Setter
+@Getter @Setter
 public class Order {
     @Id
     @GeneratedValue
@@ -20,7 +24,15 @@ public class Order {
     @JoinColumn(name="member_id")
     private Member member;
 
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> orderItems = new ArrayList<>();
 
-    //엔티티 클래스 개발 1 12:06부터
+    @OneToOne
+    @JoinColumn(name = "delivery_id")
+    private Delivery delivery;
+
+    private LocalDateTime orderDate; //주문시간
+
+    private OrderStatus status; //주문상태[ORDER<CANCEL]
 
 }
