@@ -24,8 +24,4 @@ public class Member {
     @OneToMany(mappedBy = "member") //읽기 전용이된다.
     private List<Order> orders = new ArrayList<>();
 
-    public Member(){
-        orders = new ArrayList<>();
-    }
-
 }
