@@ -20,8 +20,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /*
 Test 케이스 같은 경우는 Insert 쿼리를 커밋때리지 않는다. 그래서 만약에
 insert를 직접하고 싶으면
-@Autowired flush를 하면된다.
- */
+@Autowired flush를 하면 된다.
+*/
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -43,7 +43,6 @@ public class MemberServiceTest {
 
         //when
         Long saveId = memberService.join(member);
-
 
         //then
         em.flush();
